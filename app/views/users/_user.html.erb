@@ -1,0 +1,26 @@
+<li>
+  <%= gravatar_for user, size: 50 %>
+  <%= link_to user.name, user %>
+  
+  <% # this is my own addition - if an administrator is logged in and views 
+     #   the index page, all other admins (besides himself) will be labeled
+     #   with (admin) next to their name. Ask Tariq if he wants to keep this %>
+  
+  <% if user.admin? && !current_user?(user) %>
+    (admin)
+  <% end %>
+  
+  <% # The if !user.admin? restricts administrators from deleting other
+     # administrators %>
+  
+  <% if !user.admin? %>
+  
+    <% if current_user.admin? && !current_user?(user) %>
+      | <%= link_to "delete", user, method: :delete,
+      data: { confirm: "You sure?" } %>
+    <% end %>
+    
+  <% end %>
+  
+</li>
+

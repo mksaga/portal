@@ -1,8 +1,8 @@
 class UsersController < ApplicationController
   
-  before_action :logged_in_user, only: [:edit, :update, :index, :destroy]
+  before_action :logged_in_user, only: [:edit, :update, :destroy]
   before_action :correct_user,   only: [:edit, :update]
-  before_action :admin_user,     only: :destroy
+  before_action :admin_user,     only: [:destroy, :index]
   # here, tutorial includes :index in the logged_in_user; I will restrict
   # it only to admin users for purpose of the portal
   
@@ -79,7 +79,7 @@ class UsersController < ApplicationController
     end
     
     # Confirms an admin user
-    def admin_user(user)
+    def admin_user
       redirect_to(root_url) unless current_user.admin?
     end
   

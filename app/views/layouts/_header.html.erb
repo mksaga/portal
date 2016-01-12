@@ -6,13 +6,10 @@
         <li><%= link_to "Home", root_path %></li>
         <li><%= link_to "Help", help_path %></li>
         
-        <% if current_user %>
-          <% person = current_user || nil %>
-          <% if person.admin? %>
-            <li><%= link_to "Users", users_path %></li>
-          <% end %>
-        <% end %>
-        
+        <%# this partial contains the admin? code to evaluate whether to 
+              reveal index link %>
+        <%= render 'layouts/index' %>
+    
         <% if logged_in? %>
           
           <li class="dropdown">

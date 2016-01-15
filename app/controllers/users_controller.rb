@@ -82,8 +82,10 @@ class UsersController < ApplicationController
     # Confirms an admin user
     def admin_user
       redirect_to(root_url) unless current_user && current_user.admin?
-      flash[:danger] = "Sorry! You must be logged in as an administrator to 
-      view that page."
+      
+      # Flash will only display if current user is not an administrator
+      flash.now[:danger] = "Sorry! You must be logged in as an administrator to 
+        view that page." unless current_user.admin?
     end
   
 end

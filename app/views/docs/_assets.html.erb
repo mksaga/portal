@@ -1,0 +1,47 @@
+<%# Alhamdulillah, for now, the table code is correctly rendering the file
+    name and created_at, and the Bootstrap buttons look great. Here's what's 
+    left to be done:
+    
+    (done!) - authenticate this page! Currently, anyone can see the /docs page. Put 
+    a filter to authenticate users
+    (done!) - ONLY SHOW files that belong to the user who's logged in! Right now,
+    any user can see all files uploaded.
+    
+    - get the download/delete links to work (they look good for now)
+    
+    (done!)- add an if/else to show something else (ex. "You don't have any files 
+    uploaded now!" if there are no files in @user.docs %>
+
+<% if @user && @user == current_user %>
+  <div>
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th class="col-md-4">File Name</th>
+          <th class="col-md-2">Date Uploaded</th>
+          <th class="col-md-2">Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @user.docs.each do |file| %>
+          <tr>
+            <td><%= file.title %></td>
+            <td><%= uploaded_when(file) %> ago</td>
+            <td>
+              <%= link_to "Download", file.asset.url, class: "btn btn-primary" %>
+              <%# <button type="button" class="btn btn-primary">Download</button> %>
+              <%= link_to "Delete" , file, method: :delete, data: { confirm: "Are you sure?" }, class: "btn btn-danger" %>
+              <button type="button" class="btn btn-danger">Delete</button>
+            </td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+
+<% else %>
+  <p align="center"><%= current_user.name %>, you don't currently have any files stored in the IST Portal. Click the button below to add a new one!</p>
+  <hr />
+<% end %>
+
+  

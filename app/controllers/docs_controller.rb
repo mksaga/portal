@@ -22,8 +22,8 @@ class DocsController < ApplicationController
     @doc = @user.docs.new(doc_params)
     if @doc.save
       @doc.user_id = @user.id
-      flash[:success] = "The photo was added!"
-      redirect_to root_path
+      flash[:success] = "Your file was added!"
+      redirect_to docs_path
     else
       render 'new'
     end
@@ -32,6 +32,7 @@ class DocsController < ApplicationController
   def destroy
     @user = current_user
     @doc = @user.docs.find_by(id: params[:id])
+    @doc = nil
     @doc.destroy
     flash[:success] = "File deleted"
     redirect_to request.referrer || docs_path

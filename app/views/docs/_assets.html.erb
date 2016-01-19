@@ -29,9 +29,7 @@
             <td><%= uploaded_when(file) %> ago</td>
             <td>
               <%= link_to "Download", file.asset.url, class: "btn btn-primary" %>
-              <%# <button type="button" class="btn btn-primary">Download</button> %>
               <%= link_to "Delete" , file, method: :delete, data: { confirm: "Are you sure?" }, class: "btn btn-danger" %>
-              <button type="button" class="btn btn-danger">Delete</button>
             </td>
           </tr>
         <% end %>

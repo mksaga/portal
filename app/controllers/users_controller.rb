@@ -11,6 +11,7 @@ class UsersController < ApplicationController
   
   def show
     @user = User.find(params[:id])
+    @user_total_size = user_files_size(@user)
     redirect_to root_url and return unless @user.activated?
   end
   

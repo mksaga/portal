@@ -11,4 +11,9 @@
       
     </section>
   </aside>
+  
+  <div class="col-md-5">
+    <h3>You currently have <%= pluralize(@user.docs.count, "file")%> in the IST Portal.</h3>
+    <h3>Total storage used: <%= number_to_human_size(@user_total_size) %></h3>
+  </div>
 </div>

@@ -21,3 +21,8 @@
 
 # Ignore uploaded test images.
 /public/uploads
+
+#Ignore AWS access information!
+/config/aws.yml
+
+/.aws/credentials.ini

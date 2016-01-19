@@ -4,7 +4,8 @@
     <nav>
       <ul class="nav navbar-nav navbar-right">
         <li><%= link_to "Home", root_path %></li>
-        <li><%= link_to "Help", help_path %></li>
+        
+        <%= render 'layouts/files' %>
         
         <%# this partial contains the admin? code to evaluate whether to 
               reveal index link %>

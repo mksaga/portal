@@ -13,10 +13,11 @@
 
 <h1>Your Files</h1>
 
-<h3>So far, you have <%= pluralize(@user.docs.count, "file")%> in the IST Portal.</h3>
-<h3>You are currently using <%= number_to_human_size(@user_total_size) %></h3>
-
-<%= render 'assets' %>
+<% if @user.docs.any? %>
+  <%= render 'assets' %>
+<% else %>
+  <p>You don't currently have any files in the IST Portal. Add one below!</p>
+<% end %>
 
 <div class="text-center">
   <%= link_to "Upload a file", new_doc_path, class: "btn btn-lg btn-primary button-center" %>  

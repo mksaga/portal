@@ -14,11 +14,6 @@ class Doc < ActiveRecord::Base
   validates_attachment :asset, presence: true
                                # content_type: { content_type: ["image/jpg", "image/jpeg", "image/png"] }
   
-  #def s3_credentials
-  #  {:bucket => "istportal-test", :access_key_id => "AKIAJFU5NIDUEYIHCD2Q", 
-  #  :secret_access_key => "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" }
-  #end
-  
   def s3_credentials
     {:bucket => "istportal-test", :access_key_id => ENV['AWS_ROOT_ACCESS_KEY_ID'], 
     :secret_access_key => ENV['AWS_ROOT_SECRET_ACCESS_KEY'] }

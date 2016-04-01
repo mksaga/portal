@@ -7,9 +7,8 @@ class Doc < ActiveRecord::Base
   validates :user_id, presence: true
   
   
-  has_attached_file :asset, styles: { medium: "300x300>" },
-                            :storage => :s3,
-                            :s3_credentials => Proc.new{|a| a.instance.s3_credentials }
+  has_attached_file :asset, styles: { medium: "300x300>" }
+  
   do_not_validate_attachment_file_type :asset
   validates_attachment :asset, presence: true
                                # content_type: { content_type: ["image/jpg", "image/jpeg", "image/png"] }
